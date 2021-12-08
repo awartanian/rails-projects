@@ -1,0 +1,17 @@
+<h1>Projects Interface</h1>
+
+<ul>
+  <% @projects.each do |project| %>
+    <li>
+      <div>
+         <div class="text-secondary h4">Project Title: <span class="text-dark"><%= project.title %></span></div>
+         <div class="text-secondary h4">Project Description: <span class="text-dark"><%= project.description %></span></div>
+      </div>
+      <p>
+        <%= link_to 'View Project', project_path(project)%>
+        <%= link_to 'Edit Project', edit_project_path(project) %>
+        <%= link_to 'Delete Project', project_path(project), method: 'DELETE', data: { confirm: 'Really?' } %>
+      </p>
+    </li>
+  <% end %>
+</ul>
