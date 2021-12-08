@@ -1,6 +1,53 @@
-<h1>Single Project Interface</h1>
+<h1> Single Project Interface </h1>
 
 <div>
   <div class="text-secondary h4">Project Title: <span class="text-dark"><%= @project.title %></span></div>
   <div class="text-secondary h4">Project Description: <span class="text-dark"><%= @project.description %></span></div>
 </div>
+
+<br/>
+<br/>
+
+<h2> New User (Employee) </h2>
+
+<%= form_for [@project, User.new] do |f| %>
+  <div>
+    <%= f.label :title%>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :name%>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :email%>
+    <%= f.text_field :email %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<br/>
+<br/>
+
+<h2> All Users (employees) for this project </h2>
+
+<br/>
+
+<% @project.users.each do |user| %>
+  <ul>
+    <li>
+      <div>
+         <div class="text-secondary h5">Title: <span class="text-dark"><%= user.title %></span></div>
+         <div class="text-secondary h5">Name: <span class="text-dark"><%= user.name %></span></div>
+         <div class="text-secondary h5">Email: <span class="text-dark"><%= user.email %></span></div>
+      </div>
+      <div class="text-info">User added to Project on <%= user.created_at.strftime("%d.%m.%Y") %></div>
+      <div>
+        <%= link_to 'remove User', project_user_path(@project, user), method: 'DELETE', data: { confirm: 'Really?' } %>
+      </div>
+    </li>
+  </ul>
+<% end %>
+

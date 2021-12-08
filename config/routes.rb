@@ -1,3 +1,7 @@
 Rails.application.routes.draw do
-  resources :projects
+  get 'users/create'
+  get 'users/destroy'
+  resources :projects do
+    resources :users
+  end
 end
