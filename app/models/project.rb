@@ -5,4 +5,7 @@ class Project < ApplicationRecord
 
   # 1..N
   has_many :users
+
+  # 1..1
+  has_one :team_lead_user
 end

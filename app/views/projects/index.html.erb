@@ -1,4 +1,6 @@
+<br/>
 <h1>Projects Interface</h1>
+<br/>
 
 <ul>
   <% @projects.each do |project| %>
@@ -13,5 +15,7 @@
         <%= link_to 'Delete Project', project_path(project), method: 'DELETE', data: { confirm: 'Really?' } %>
       </p>
     </li>
+    <br/>
   <% end %>
 </ul>
+

@@ -12,6 +12,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @project = Project.find(params[:project_id])
+    @user = @project.users.find(params[:id])
+  end
+
+  def update
+    @project = Project.find(params[:project_id])
+    @user = @project.users.find(params[:id])
+
+    if @user.update(user_params)
+      redirect_to projects_path
+    else
+      flash.alert = "Error"
+      render :edit
+    end
+  end
+
   def destroy
     @project = Project.find(params[:project_id])
     @user = @project.users.find(params[:id])
