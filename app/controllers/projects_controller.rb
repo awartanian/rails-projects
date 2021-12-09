@@ -15,6 +15,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
 
     if @project.save
+      @project.image.attach(project_params[:image])
       redirect_to projects_path
     else
       render :new
@@ -51,6 +52,6 @@ class ProjectsController < ApplicationController
 private
 
   def project_params
-    params.require(:project).permit(:title, :description)
+    params.require(:project).permit(:title, :description, :image)
   end
 end

@@ -7,5 +7,7 @@ class Project < ApplicationRecord
   has_many :users
 
   # 1..1
-  has_one :team_lead_user
+  #has_one :team_lead_user
+
+  has_one_attached :image
 end
