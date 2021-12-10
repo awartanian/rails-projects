@@ -1,24 +1,25 @@
-<br/>
+
 <h1>Projects Interface</h1>
-<br/>
 
 <ul>
   <% @projects.each do |project| %>
-    <li>
+    <li class="container">
       <% if project.image.attached? %>
         <%= image_tag project.image.variant(resize_to_limit: [200, 200]) %>
       <% end %>
-      <div>
+      <div class="projects-info">
          <div class="text-secondary h4">Project Title: <span class="text-dark"><%= project.title %></span></div>
          <div class="text-secondary h4">Project Description: <span class="text-dark"><%= project.description %></span></div>
       </div>
-      <p>
-        <%= link_to 'View Project', project_path(project)%>
-        <%= link_to 'Edit Project', edit_project_path(project) %>
-        <%= link_to 'Delete Project', project_path(project), method: 'DELETE', data: { confirm: 'Really?' } %>
-      </p>
+      <div>
+        <div class="button"><%= link_to 'View Project', project_path(project)%></div>
+        <div class="button"><%= link_to 'Edit Project', edit_project_path(project) %></div>
+        <div class="button"><%= link_to 'Delete Project', project_path(project), method: 'DELETE', data: { confirm: 'Really?' } %></div>
+      </div>
     </li>
-    <br/>
   <% end %>
 </ul>
+
+
+
 

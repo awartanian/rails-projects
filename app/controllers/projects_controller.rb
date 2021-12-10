@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @users = User.all
   end
 
   def new
@@ -47,6 +48,39 @@ class ProjectsController < ApplicationController
       flash.alert = "Can't delete record"
       redirect_to projects_path
     end
+  end
+
+
+  def add_user
+    @project = Project.find(params[:id])
+    @user = User.find(params[:user_id])
+
+    @project.users << @user
+
+    flash.notice = "Added user to project"
+    redirect_to project_path(@project)
+  end
+
+  def remove_user
+    @project = Project.find(params[:id])
+    @user = @project.users.find(params[:user_id])
+
+    @project.users.delete(@user)
+
+    flash.notice = "Remvoed user from project"
+    redirect_to project_path(@project)
+  end
+
+  def make_team_lead
+    @project = Project.find(params[:id])
+    @user = User.find(params[:user_id])
+
+    @project.team_lead  = @user
+    @project.save
+
+    flash.notice = "User is now team lead"
+    redirect_to project_path(@project)
+
   end
 
 private

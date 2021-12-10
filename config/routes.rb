@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
-  root to: 'projects#index'
   resources :projects do
-    resources :users
-    resources :team_lead_user
+    member do
+      post :add_user
+      post :make_team_lead
+      delete :remove_user
+    end
+
+    # collection do
+    #   post :another_action
+    # end
   end
+  resources :users
 end

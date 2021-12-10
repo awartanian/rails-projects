@@ -1,28 +1,36 @@
 class UsersController < ApplicationController
+  def index
+    @users = User.all
+  end
+
+  def show
+    @user = User.find(params[:id])
+  end
+
+  def new
+    @user = User.new
+  end
+
   def create
-    @project = Project.find(params[:project_id])
-    @user = @project.users.new(user_params)
+    @user = User.new(user_params)
 
     if @user.save
-      flash.notice = "Added user"
-      redirect_to project_path(@project)
+      @user.image.attach(user_params[:image])
+      redirect_to users_path
     else
-      flash.alert = "Cannot create user"
-      redirect_to project_path(@project)
+      render :new
     end
   end
 
   def edit
-    @project = Project.find(params[:project_id])
-    @user = @project.users.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def update
-    @project = Project.find(params[:project_id])
-    @user = @project.users.find(params[:id])
+    @user = User.find(params[:id])
 
     if @user.update(user_params)
-      redirect_to projects_path
+      redirect_to users_path
     else
       flash.alert = "Error"
       render :edit
@@ -30,25 +38,20 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:project_id])
-    @user = @project.users.find(params[:id])
+    @user = User.find(params[:id])
 
     if @user.destroy
-      flash.notice = "Deleted user"
-      redirect_to project_path(@project)
+      flash.notice = "Record deleted"
+      redirect_to users_path
     else
-      flash.alert = "Cannot delete user"
-      redirect_to project_path(@project)
+      flash.alert = "Can't delete record"
+      redirect_to users_path
     end
   end
 
-  private
+private
 
   def user_params
-    params.require(:user).permit(
-      :title,
-      :name,
-      :email
-    )
+    params.require(:user).permit(:title, :name, :image)
   end
 end

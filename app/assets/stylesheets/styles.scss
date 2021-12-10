@@ -1,0 +1,64 @@
+// Place all the styles related to the projects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+// * {
+//   outline: 1px solid black;
+// }
+
+h1 {
+  margin: 2rem;
+  font-size: 2rem;
+}
+
+.form {
+  margin: 2rem;
+
+  .form-input {
+    display: flex;
+    margin: 0.8rem;
+
+    label {
+      width: 5rem;
+      margin-right: 0.8rem;
+    }
+  }
+
+  .form-submit {
+    list-style-type: none;
+    margin-top: 2rem;
+
+    input {
+      text-decoration: none;
+      color: white;
+      background-color: rgb(49, 0, 104);
+      border: none;
+      padding: 0.6rem 1rem;
+    }
+  }
+}
+
+.projects-info {
+  margin: 2rem;
+}
+
+.container {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: rgb(233, 233, 233);
+  list-style-type: none;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  margin: 1rem 0 0.5rem 0;
+  background-color: rgb(49, 0, 104);
+  color: white;
+  cursor: pointer;
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
