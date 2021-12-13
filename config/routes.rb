@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resources :projects do
+    resources :updates
+
     member do
       post :add_user
       post :make_team_lead

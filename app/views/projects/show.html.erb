@@ -7,6 +7,45 @@
   <div>Project team lead: <%= @project.team_lead.nil? ? 'Noone' : @project.team_lead.name %> </div>
 </div>
 
+<h2>
+  New Status update
+</h2>
+
+<%= form_for [@project, Update.new] do |f| %>
+  <ul class="form">
+    <li class="form-input">
+      <%= f.label :text %>
+      <%= f.text_field :text%>
+    </li>
+
+    <li class="form-input">
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+    </li>
+
+    <li class="form-submit">
+      <%= f.submit %>
+    </li>
+  </ul>
+<% end %>
+
+
+<h2>
+  Status Updates
+</h2>
+
+<% @project.updates.each do |update| %>
+  <ul class="container">
+    <% if update.image.attached? %>
+        <%= image_tag update.image.variant(resize_to_limit: [150, 150]) %>
+    <% end %>
+    <li>
+      <%= update.text %>
+    </li>
+  </ul>
+<% end %>
+
+
 <h2> Assigned </h2>
 
 <ul>

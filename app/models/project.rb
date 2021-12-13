@@ -4,6 +4,7 @@ class Project < ApplicationRecord
 
   has_one_attached :image
   has_and_belongs_to_many :users
+  has_many :updates
 
   def team_lead
     if self.team_lead_user_id
