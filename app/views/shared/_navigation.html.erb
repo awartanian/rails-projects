@@ -1,0 +1,38 @@
+<nav>
+    <ul class="nav-links">
+      <li class="nav-link">
+        <%= link_to 'New Project', new_project_path, class:"nav-link" %>
+      </li>
+
+      <li class="nav-link">
+        <%= link_to "Projects Interface", projects_path, class:"nav-link" %>
+      </li>
+
+      <li class="nav-link">
+        <%= link_to "User Interface", users_path, class:"nav-link" %>
+      </li>
+    </ul>
+
+    <ul class="nav-auths">
+      <% if current_user %>
+        <li class="nav-auth">
+          Logged in as <%= current_user.email %>.
+        </li>
+
+        <li class="nav-auth">
+          <%= link_to "Log out", logout_path %>
+        </li>
+
+     <% else %>
+        <li class="nav-auth">
+          <%= link_to "Sign up", signup_path %> or
+        </li>
+
+        <li class="nav-auth">
+         <%= link_to "log in", login_path %>
+        </li>
+      <% end %>
+    </ul>
+</nav>
+
+

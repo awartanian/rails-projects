@@ -12,9 +12,10 @@
          <div class="text-secondary h4">Project Description: <span class="text-dark"><%= project.description %></span></div>
       </div>
       <div>
-        <div class="button"><%= link_to 'View Project', project_path(project)%></div>
-        <div class="button"><%= link_to 'Edit Project', edit_project_path(project) %></div>
-        <div class="button"><%= link_to 'Delete Project', project_path(project), method: 'DELETE', data: { confirm: 'Really?' } %></div>
+        <%= link_to 'View Project', project_path(project), class: "button" %>
+        <%= link_to 'Edit Project', edit_project_path(project), class: "button"  %>
+        <%= link_to 'Delete Project', project_path(project), method: 'DELETE', data: { confirm: 'Really?' }, class: "button"  %>
+        <span class="text-dark"><%= project%></span>
       </div>
     </li>
   <% end %>

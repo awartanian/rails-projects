@@ -7,9 +7,7 @@
   <div>Project team lead: <%= @project.team_lead.nil? ? 'Noone' : @project.team_lead.name %> </div>
 </div>
 
-<h2>
-  New Status update
-</h2>
+<h2> New Status update </h2>
 
 <%= form_for [@project, Update.new] do |f| %>
   <ul class="form">
@@ -30,9 +28,7 @@
 <% end %>
 
 
-<h2>
-  Status Updates
-</h2>
+<h2> Status Updates </h2>
 
 <% @project.updates.each do |update| %>
   <ul class="container">

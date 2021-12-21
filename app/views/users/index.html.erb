@@ -8,8 +8,8 @@
         <%= image_tag user.image.variant(resize_to_limit: [200, 200]) %>
       <% end %>
       <div class="users-info">
-         <div class="text-secondary h4">User Title: <span class="text-dark"><%= user.title %></span></div>
-         <div class="text-secondary h4">User Name: <span class="text-dark"><%= user.name %></span></div>
+         <div class="text-secondary h4">Title: <span class="text-dark"><%= user.title %></span></div>
+         <div class="text-secondary h4">Full name: <span class="text-dark"><%= user.name %></span></div>
       </div>
       <div>
         <div class="button"><%= link_to 'View user', user_path(user)%></div>
